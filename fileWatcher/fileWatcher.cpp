@@ -29,7 +29,7 @@ public:
         struct stat st;
         stat(the_fileName.c_str(), &st);
 
-        if (lengthRead != st.st_size)
+        if (lengthRead < st.st_size)
         {
             the_queue.push(std::make_pair(lengthRead, st.st_size));
             lengthRead = st.st_size;

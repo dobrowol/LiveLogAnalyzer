@@ -2,6 +2,7 @@
 #include "concurrent_queue.cpp"
 #include "fileWatcher/fileWatcher.cpp"
 #include "queueDispatcher/QueueDispatcher.cpp"
+#include "reportPrinter/DefaultPrinter.cpp"
 #include <thread>
 using namespace std;
 using namespace utils;
@@ -20,7 +21,8 @@ void runFileWatcher()
 }
 void runQueueDispatcher()
 {
-    queueDispatcher::QueueDispatcher qd(exampleLogFile,q);
+    printer::DefaultPrinter defaultPrinter;
+    queueDispatcher::QueueDispatcher qd(exampleLogFile,q, defaultPrinter);
 	qd.dispatch();    
 }
 void sizeQueue()
