@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "concurrent_queue.cpp"
+#include "concurrent_queue.hpp"
 #include <string>
 #include <iostream>
 #include <thread>
@@ -9,7 +9,7 @@ using namespace utils;
 class QueueTest : public ::testing::Test {
 
 public:
-    concurrent_queue sut;
+    concurrent_queue<std::string> sut;
     std::string popped_value;
     void pop()
     {

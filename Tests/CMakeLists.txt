@@ -28,7 +28,13 @@ endif()
 # etc. as appropriate
 include_directories(${CMAKE_SOURCE_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/utils)
+include_directories(${CMAKE_SOURCE_DIR}/fileWatcher)
 add_executable( queueTests queue_test.cpp )
 target_link_libraries(queueTests gtest gtest_main)
 add_test( NAME queueTests COMMAND queueTests )
+
+add_library(concurrent_queue ${CMAKE_SOURCE_DIR}/utils/concurrent_queue.cpp)
+add_executable( fileWatcherTests fileWatcher_tests.cpp)
+target_link_libraries(fileWatcherTests gtest gtest_main concurrent_queue)
+add_test( NAME fileWatcherTests COMMAND fileWatcherTests )
 
